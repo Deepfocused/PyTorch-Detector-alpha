@@ -1,0 +1,46 @@
+Dataset:
+  train: C:\Users\user\Downloads\P3M-10k\train\blurred_image
+  valid: C:\Users\user\Downloads\P3M-10k\validation\P3M-500-P\blurred_image
+#  valid: C:\Users\user\Downloads\P3M-10k\validation\P3M-500-NP\original_image
+
+model:
+  training: True
+  load_name: 512_512_ADAM_PRES18_DataAug_False_1frame # training = False,
+  save_period: 1
+  load_period: 0
+  input_size: [512, 512] # height, width
+  input_frame_number: 1
+  ResNetbase: 18 # resnet base version : 18, 34, 50, 101, 152
+  pretrained_base: True #  input_frame_number = 1 일 때만
+
+hyperparameters:
+
+  # model 관련
+  image_mean: [0.485, 0.456, 0.406] # R G B
+  image_std:  [0.229, 0.224, 0.225] # R G B
+
+  # 학습 관련
+  epoch: 21
+  batch_size: 16
+  batch_log: 100
+  subdivision: 1
+  data_augmentation: False
+  num_workers: 8 # the number of multiprocessing workers to use for data preprocessing.
+  optimizer: ADAM # ADAM, RMSPROP
+  learning_rate: 0.001
+  weight_decay: 0.0
+  decay_lr: 0.9
+  decay_step: 5 # 몇 epoch이 지난후 decay_lr을 적용할지
+context:
+  using_cuda: True
+validation:
+  valid_size: 8
+  eval_period: 1
+  tensorboard: True
+mlflow:
+  using_mlflow: True
+  run_name: Segmentation
+
+
+
+
