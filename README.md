@@ -34,6 +34,4 @@
         to do : hiddenlayer -> build_graph 코드 작성
         ```
 >## ***Author*** 
-
 * medical18@naver.com / JONGGON
-# PyTorch-Detector-alpha
